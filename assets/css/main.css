@@ -84,9 +84,7 @@ input, select, textarea {
 	}
 
 	body {
-          background-image: url("paper.gif");
-  background-repeat: repeat-y;
-		background: #111;
+		background: #381A23;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -2596,10 +2594,10 @@ input, select, textarea {
 		justify-content: space-between;
 		background-color: #1f1815;
 		background-attachment: scroll,								scroll;
-		background-image: url("images/overlay.png"), url("../../images/bg.jpg");
+		background-image:  url("../../images/bg.png");
 		background-position: top left,							top left;
 		background-repeat: repeat,								no-repeat;
-		background-size: auto,								150%;
+		background-size: 100%;
 		color: rgba(255, 255, 255, 0.5);
 		height: 100%;
 		left: 0;
