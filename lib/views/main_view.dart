@@ -15,6 +15,7 @@ class MainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
+      
       child: Container(
         padding: EdgeInsets.all(24.0),
         child: Column(
@@ -43,19 +44,12 @@ class MainViewSinglePanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      spacing: 20,
+      spacing: 42,
       // mainAxisSize: MainAxisSize.max,
       children: [
         // SizedBox(height: 48),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: spacing,
-
-          children: [
-            Expanded(child: AboutView()),
-            ProfileView(),
-          ],
-        ),
+        ProfileView(),
+        AboutView(),
         SkillsView(),
         ProjectsView(),
         MiscView(),
@@ -71,16 +65,17 @@ class MainViewMultiPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       // mainAxisSize: MainAxisSize.min,
-      spacing: spacing,
+      spacing: 42,
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         // SizedBox(height: 48),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
           spacing: 50,
           children: [
-            Flexible(child: AboutView()),
+            Flexible(flex: 5, child: AboutView()),
             ProfileView(),
           ],
         ),

@@ -15,7 +15,8 @@ dependencies:
   smooth_page_indicator:
   flutter_hooks:
   url_launcher:
-
+  auto_size_text:
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

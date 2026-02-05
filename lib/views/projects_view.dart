@@ -34,7 +34,7 @@ class ProjectsView extends StatelessWidget {
       bulletpoints: [
         "State Management with Riverpod",
         "SQL Database with Drift",
-        // "last one, short",
+        "Navigation with GoRouter",
         // "four and five and six and",
         // "new last one that has a bit more to say",
       ],
@@ -69,13 +69,19 @@ class ProjectsView extends StatelessWidget {
 
     return Container(
       child: Column(
+        spacing: 4,
         crossAxisAlignment: CrossAxisAlignment.start,
-        spacing: 24.0,
         children: [
           Text("Projects", textAlign: TextAlign.start, style: TextStyle(fontSize: 20)),
-          ProjectCard(model: modelPromptwist),
-          ProjectCard(model: modelStitchintime),
-          ProjectCard(model: modelSubmeowsions),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 24.0,
+            children: [
+              ProjectCard(model: modelPromptwist),
+              ProjectCard(model: modelStitchintime),
+              ProjectCard(model: modelSubmeowsions),
+            ],
+          ),
         ],
       ),
     );

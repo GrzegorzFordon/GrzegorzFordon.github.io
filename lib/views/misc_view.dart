@@ -6,26 +6,30 @@ class MiscView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      spacing: 24.0,
       children: [
-        Text("Personal", textAlign: TextAlign.start, style: TextStyle(fontSize: 20)),
-        SelectionArea(
-          child: Container(
-            // height: 250,
-            // width: 250,
-            padding: EdgeInsets.all(24),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              borderRadius: BorderRadius.circular(5),
-              boxShadow: [BoxShadow(offset: Offset(4, 4), color: Theme.of(context).colorScheme.onSurfaceVariant)],
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          spacing: 4.0,
+          children: [
+            Text("Personal", textAlign: TextAlign.start, style: TextStyle(fontSize: 20)),
+            SelectionArea(
+              child: Container(
+                // height: 250,
+                // width: 250,
+                padding: EdgeInsets.all(24),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primaryContainer,
+                  borderRadius: BorderRadius.circular(5),
+                  boxShadow: [BoxShadow(offset: Offset(4, 4), color: Theme.of(context).colorScheme.onSurfaceVariant)],
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  spacing: 24,
+                  children: List<Widget>.generate(miscText.length, (index) => Text(miscText[index]))+[Image.asset("assets/gamedev01.png",cacheWidth: 300,)],
+                ),
+              ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              spacing: 24,
-              children: List.generate(miscText.length, (index) => Text(miscText[index])),
-            ),
-          ),
+          ],
         ),
       ],
     );
