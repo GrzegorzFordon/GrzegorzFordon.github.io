@@ -28,8 +28,8 @@ class ProjectCard extends StatelessWidget {
           spacing: 4,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SelectionArea(
-              child: Expanded(
+            Flexible(
+              child: SelectionArea(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.start,
