@@ -3,8 +3,8 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "c34de1834eb1e526704760378f8872db",
-"assets/AssetManifest.bin.json": "7eafe92ae0307e4a1a37a8ca40710962",
+const RESOURCES = {"assets/AssetManifest.bin": "961b2e8f365906443fd9f8490bc4b653",
+"assets/AssetManifest.bin.json": "4934b863b4621375495d9ae9602d9088",
 "assets/assets/gamedev01.png": "e30ed8551cdc7d5bc1b7d973209a6968",
 "assets/assets/icon/github.png": "f76f154cd69056fce4ffb86d55f5676a",
 "assets/assets/icon/GitHub_Invertocat_White_Clearspace.png": "e94e583c9cf89d228743c2d715ca287c",
@@ -12,9 +12,6 @@ const RESOURCES = {"assets/AssetManifest.bin": "c34de1834eb1e526704760378f8872db
 "assets/assets/profile.png": "018ea54e7f85d58dc15653c776422060",
 "assets/assets/screens/promptwist_categories.png": "905a372733b641e666c220fcf00e59ad",
 "assets/assets/screens/promptwist_home.png": "33e5f1f5952e0bbfc963e1f966fb7add",
-"assets/assets/screens/promptwist_wide.PNG": "bb38e5a810275f0cbb6a09a45386a41e",
-"assets/assets/screens/stitchintime_main.PNG": "83bcaaaca93882a3d28cc6dee37c8f65",
-"assets/assets/screens/submeowsions_main.PNG": "b318ad186afca8d99651f2fd29a128b5",
 "assets/FontManifest.json": "c75353fbeebcd695f0652f190c83d46c",
 "assets/fonts/MaterialIcons-Regular.otf": "02196e41dd079624f8fd13da2b5fd2cf",
 "assets/NOTICES": "d8fd392ddb80f72231233f5108919fb6",
@@ -37,7 +34,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "c34de1834eb1e526704760378f8872db
 "canvaskit/skwasm_heavy.wasm": "b0be7910760d205ea4e011458df6ee01",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "flutter.js": "24bc71911b75b5f8135c949e27a2984e",
-"flutter_bootstrap.js": "b3b6e3594c877e4299f7d19e74a5cb77",
+"flutter_bootstrap.js": "516856936eb33fd30745ee4f9bf045df",
 "fonts/customIcons.ttf": "b05dca8299342a3abbdaef87a4188009",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
