@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends HookWidget {
   const ProfileView({super.key});
 
   @override
@@ -13,7 +14,7 @@ class ProfileView extends StatelessWidget {
       width: 32,
       colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onSurfaceVariant, BlendMode.srcIn),
     );
-
+    var isSillyHook = useState(false);
     return Container(
       width: 200,
       // height: 256,
@@ -27,9 +28,56 @@ class ProfileView extends StatelessWidget {
               borderRadius: BorderRadius.circular(5),
               boxShadow: [BoxShadow(offset: Offset(5, 5), color: Theme.of(context).colorScheme.surfaceContainer)],
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(5),
-              child: Image.asset("assets/profile.png", filterQuality: FilterQuality.high),
+            child: GestureDetector(
+              onTap: () => isSillyHook.value = !isSillyHook.value,
+              child: Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(5),
+                    child: Image.asset("assets/profile.png", filterQuality: FilterQuality.high),
+                  ),
+                  if (isSillyHook.value)
+                    Positioned(
+                      left: 110,
+                      top: 45,
+                      child: Container(
+                        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white),
+                        height: 20,
+                        width: 20,
+                        child: Transform.scale(
+                          scale: 0.5,
+                          child: Transform.translate(
+                            offset: Offset(2, 2),
+                            child: Container(
+                              constraints: BoxConstraints(maxHeight: 5, maxWidth: 5),
+                              decoration: BoxDecoration(color: Colors.brown, shape: BoxShape.circle),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  if (isSillyHook.value)
+                    Positioned(
+                      left: 85,
+                      top: 50,
+                      child: Container(
+                        decoration: BoxDecoration(shape: BoxShape.circle, color: Colors.white),
+                        height: 15,
+                        width: 15,
+                        child: Transform.scale(
+                          scale: 0.5,
+                          child: Transform.translate(
+                            offset: Offset(2, 2),
+                            child: Container(
+                              constraints: BoxConstraints(maxHeight: 5, maxWidth: 5),
+                              decoration: BoxDecoration(color: Colors.brown, shape: BoxShape.circle),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              ),
             ),
           ),
           Row(

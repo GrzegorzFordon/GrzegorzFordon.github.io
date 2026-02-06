@@ -13,125 +13,121 @@ class ProjectCard extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    return SelectionArea(
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: 900),
+        child: Container(
+          padding: EdgeInsets.all(12.0),
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primaryContainer,
+            borderRadius: BorderRadius.circular(5),
+            boxShadow: [BoxShadow(offset: Offset(4, 4), color: Theme.of(context).colorScheme.onSurfaceVariant)],
+          ),
+          child: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+              bool isWide = constraints.maxWidth > 587;
+              return Flex(
+                direction: isWide ? Axis.horizontal : Axis.vertical,
+                spacing: isWide ? 12 : 12,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    spacing: 24.0,
+                    children: [
+                      Text(
+                        model.title,
+                        style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),
+                        overflow: TextOverflow.clip,
+                        maxLines: 1,
+                      ),
+                      ConstrainedBox(
+                        constraints: BoxConstraints(maxWidth: isWide ? 350 : 400),
+                        child: Text(model.paragraph),
+                      ),
+                      BulletPointsText(bulletPoints: model.bulletpoints),
+                      ButtonRow(pageUrlString: model.hostURL, repoUrlString: model.githubURL),
+                    ],
+                  ),
+                  Container(height: 300, width: 220, child: ImageSlideShowWidget(model: model)),
+                  // Container(
+                  //   height: isWide ? 250 : 350,
+                  //   width: isWide ? 250 : double.infinity,
+                  //   child: isWide
+                  //       ? ImageSlideShowWidget(model: model)
+                  //       : Container(
+                  //           padding: EdgeInsets.all(8.0),
+                  //           constraints: BoxConstraints(maxWidth: 30),
+                  //           child: FittedBox(
+                  //             clipBehavior: Clip.antiAlias,
+                  //             fit: BoxFit.contain,
+                  //             child: Row(
+                  //               spacing: 24.0,
+                  //               mainAxisAlignment: MainAxisAlignment.start,
+                  //               crossAxisAlignment: CrossAxisAlignment.start,
+                  //               children: [
+                  //                 Image.asset(model.imagePaths[0], filterQuality: FilterQuality.high),
+                  //                 // Image.asset(model.imagePaths[1], filterQuality: FilterQuality.high),
+                  //                 // Image.asset(model.imagePaths[2], filterQuality: FilterQuality.high),
+                  //               ],
+                  //             ),
+                  //           ),
+                  //         ),
+                  // ),
+                ],
+              );
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ImageSlideShowWidget extends HookWidget {
+  final ProjectModel model;
+  const ImageSlideShowWidget({super.key, required this.model});
+
+  @override
+  Widget build(BuildContext context) {
     var pageController = usePageController();
     Duration duration = Duration(milliseconds: 1000);
     Curve curve = Curves.fastEaseInToSlowEaseOut;
-
-    return ConstrainedBox(
-      constraints: BoxConstraints(maxWidth: 900),
-      child: Container(
-        padding: EdgeInsets.all(12.0),
-        // width: double.infinity,
-        // height: 300,
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primaryContainer,
-          borderRadius: BorderRadius.circular(5),
-          boxShadow: [BoxShadow(offset: Offset(4, 4), color: Theme.of(context).colorScheme.onSurfaceVariant)],
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Expanded(
+          child: PageView.builder(
+            controller: pageController,
+            itemBuilder: (BuildContext context, int index) => Image.asset(
+              model.imagePaths[index % model.imagePaths.length],
+              filterQuality: FilterQuality.high,
+              cacheWidth: 250,
+            ),
+          ),
         ),
-        child: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) {
-            bool isWide = constraints.maxWidth > 600;
-            // log("${constraints.maxWidth}");
-            return Flex(
-              direction: isWide ? Axis.horizontal : Axis.vertical,
-              spacing: isWide ? 4 : 12,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: isWide ? CrossAxisAlignment.start : CrossAxisAlignment.center,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  spacing: 24.0,
-                  children: [
-                    Text(
-                      model.title,
-                      style: TextStyle(fontSize: 36, fontWeight: FontWeight.w800),
-                      overflow: TextOverflow.clip,
-                      maxLines: 1,
-                    ),
-                    ConstrainedBox(
-                      constraints: BoxConstraints(maxWidth: isWide ? 400 : 600),
-                      child: Text(model.paragraph),
-                    ),
-                    BulletPointsText(bulletPoints: model.bulletpoints),
-                    ButtonRow(pageUrlString: model.hostURL, repoUrlString: model.githubURL),
-                  ],
-                ),
-                Container(
-                  height: 300,
-                  width: isWide ? 250 : double.infinity,
-                  // color: Colors.green,
-                  // child: ImageSlideShowWidget(imagePaths: model.imagePaths),
-                  child: isWide
-                      ? Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              child: PageView(
-                                controller: pageController,
-                                children: [
-                                  Image.asset(model.imagePaths[0], filterQuality: FilterQuality.high),
-                                  Image.asset(model.imagePaths[1], filterQuality: FilterQuality.high),
-                                  Image.asset(model.imagePaths[2], filterQuality: FilterQuality.high),
-                                ],
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                IconButton(
-                                  onPressed: () => pageController.previousPage(duration: duration, curve: curve),
-                                  icon: Icon(Icons.arrow_back_rounded, color: Theme.of(context).colorScheme.surface),
-                                ),
-                                SmoothPageIndicator(
-                                  controller: pageController,
-                                  count: model.imagePaths.length,
-                                  effect: ColorTransitionEffect(),
-                                  onDotClicked: (index) =>
-                                      pageController.animateToPage(index, duration: duration, curve: curve),
-                                ),
-                                IconButton(
-                                  onPressed: () => pageController.nextPage(duration: duration, curve: curve),
-                                  icon: Icon(Icons.arrow_forward_rounded, color: Theme.of(context).colorScheme.surface),
-                                ),
-                              ],
-                            ),
-                          ],
-                        )
-                      : Container(
-                          padding: EdgeInsets.all(8.0),
-                          constraints: BoxConstraints(maxWidth: 30),
-                          child: FittedBox(
-                            fit: BoxFit.fitWidth,
-                            child: Row(
-                              spacing: 24.0,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Image.asset(
-                                  model.imagePaths[0],
-                                  filterQuality: FilterQuality.high,
-                                  fit: BoxFit.scaleDown,
-                                ),
-                                Image.asset(
-                                  model.imagePaths[1],
-                                  filterQuality: FilterQuality.high,
-                                  fit: BoxFit.scaleDown,
-                                ),
-                                Image.asset(
-                                  model.imagePaths[2],
-                                  filterQuality: FilterQuality.high,
-                                  fit: BoxFit.scaleDown,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                ),
-              ],
-            );
-          },
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            IconButton(
+              onPressed: () => pageController.previousPage(duration: duration, curve: curve),
+              icon: Icon(Icons.arrow_back_rounded, color: Theme.of(context).colorScheme.surface),
+            ),
+            SmoothPageIndicator(
+              controller: pageController,
+              count: model.imagePaths.length,
+              effect: ColorTransitionEffect(),
+              onDotClicked: (index) => pageController.animateToPage(index, duration: duration, curve: curve),
+            ),
+            IconButton(
+              onPressed: () => pageController.nextPage(duration: duration, curve: curve),
+              icon: Icon(Icons.arrow_forward_rounded, color: Theme.of(context).colorScheme.surface),
+            ),
+          ],
         ),
-      ),
+      ],
     );
   }
 }
@@ -152,53 +148,6 @@ class BulletPointsText extends StatelessWidget {
           (index) => Text(String.fromCharCode(8227) + " " + bulletPoints[index]),
         ),
       ),
-    );
-  }
-}
-
-class ImageSlideShowWidget extends HookWidget {
-  final List<String> imagePaths;
-  const ImageSlideShowWidget({super.key, required this.imagePaths});
-
-  @override
-  Widget build(BuildContext context) {
-    var pageController = usePageController();
-    Duration duration = Duration(milliseconds: 1000);
-    Curve curve = Curves.fastEaseInToSlowEaseOut;
-
-    return Column(
-      spacing: 15,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      // mainAxisSize: MainAxisSize.min,
-      children: [
-        PageView.builder(
-          controller: pageController,
-          pageSnapping: true,
-          itemCount: imagePaths.length,
-          itemBuilder: (BuildContext context, int index) =>
-              Image.asset(imagePaths[index], filterQuality: FilterQuality.high),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
-              onPressed: () => pageController.previousPage(duration: duration, curve: curve),
-              icon: Icon(Icons.arrow_back_rounded, color: Theme.of(context).colorScheme.surface),
-            ),
-            SmoothPageIndicator(
-              controller: pageController,
-              count: imagePaths.length,
-              effect: ColorTransitionEffect(),
-              onDotClicked: (index) => pageController.animateToPage(index, duration: duration, curve: curve),
-            ),
-            IconButton(
-              onPressed: () => pageController.nextPage(duration: duration, curve: curve),
-              icon: Icon(Icons.arrow_forward_rounded, color: Theme.of(context).colorScheme.surface),
-            ),
-          ],
-        ),
-      ],
     );
   }
 }

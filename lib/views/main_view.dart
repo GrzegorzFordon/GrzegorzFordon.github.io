@@ -73,7 +73,7 @@ class MainViewMultiPanel extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
-          spacing: 50,
+          spacing: 24,
           children: [
             Flexible(flex: 5, child: AboutView()),
             ProfileView(),
@@ -83,9 +83,9 @@ class MainViewMultiPanel extends StatelessWidget {
           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          spacing: 50,
+          spacing: 24,
           children: [
-            Flexible(flex: 4, child: ProjectsView()),
+            Flexible(flex: 3, child: ProjectsView()),
             Flexible(flex: 2, child: Column(spacing: 50, children: [SkillsView(), MiscView()])),
           ],
         ),

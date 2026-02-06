@@ -23,7 +23,7 @@ class ProjectsView extends StatelessWidget {
         "assets/screens/promptwist_categories.png",
         "assets/screens/promptwist_wide.png",
       ],
-      githubURL: "github.com",
+      githubURL: "https://github.com/GrzegorzFordon/promptwist",
       hostURL: "https://grzegorzfordon.github.io/promptwist/",
     );
 
@@ -63,7 +63,7 @@ class ProjectsView extends StatelessWidget {
         "assets/screens/stitchintime_main.png",
         "assets/screens/stitchintime_main.png",
       ],
-      githubURL: "github.com",
+      githubURL: "https://github.com/GrzegorzFordon/stitchin_time",
       hostURL: "https://grzegorzfordon.github.io/stitchin_time/",
     );
 

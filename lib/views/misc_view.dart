@@ -25,7 +25,9 @@ class MiscView extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   spacing: 24,
-                  children: List<Widget>.generate(miscText.length, (index) => Text(miscText[index]))+[Image.asset("assets/gamedev01.png",cacheWidth: 300,)],
+                  children:
+                      List<Widget>.generate(miscText.length, (index) => Text(miscText[index])) +
+                      [Image.asset("assets/gamedev01.png", cacheWidth: 400)],
                 ),
               ),
             ),
