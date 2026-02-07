@@ -24,7 +24,6 @@ class MiscView extends HookWidget {
       videoController.value.initialize().then((value) {
         videoController.value.setVolume(0);
         videoController.value.setLooping(true);
-        videoController.value.play();
       });
     });
 
@@ -62,13 +61,19 @@ class MiscView extends HookWidget {
                                 child: PageView.builder(
                                   controller: pageController,
                                   itemBuilder: (context, index) {
-                                    VideoPlayerController controller = VideoPlayerController.networkUrl(
-                                      Uri.parse("https://i.imgur.com/${gamedevGifUrls[index%gamedevGifUrls.length]}.mp4"),
+                                    videoController.value = VideoPlayerController.networkUrl(
+                                      Uri.parse(
+                                        "https://i.imgur.com/${gamedevGifUrls[index % gamedevGifUrls.length]}.mp4",
+                                      ),
                                     );
 
-                                    controller.initialize();
-                                    controller.play();
-                                    return VideoPlayer(controller);
+                                    videoController.value.initialize().then((value) {
+                                      videoController.value.setVolume(0);
+                                      videoController.value.setLooping(true);
+                                      return videoController.value.play();
+                                    });
+                                    // controller.play();
+                                    return VideoPlayer(videoController.value);
                                   },
                                 ),
                               ),
@@ -119,8 +124,8 @@ class MiscView extends HookWidget {
 
 List<String> miscText = [
   "In my free time I enjoy playing board games and cooking with friends. Some of my current favourites to play are Scythe, Root and the Arkham Horror LCG. :)",
-  "I also admin a game development-focused Discord server that puts a big focus on helping new developers gain their skills quickly.",
-  // "I also do game dev as a hobby",
+  "I admin a game development-focused Discord server that puts a big focus on helping new developers gain their skills quickly.",
+  "I also do game dev as a hobby",
 ];
 
 List<String> gamedevGifUrls = ["SEpYkPT", "SELQywI", "JVxj7R1", "pvO3Kbq", "vSXF4GP", "P5d6bT3", "ZavL3BS"];

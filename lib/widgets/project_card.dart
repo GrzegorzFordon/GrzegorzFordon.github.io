@@ -30,7 +30,7 @@ class ProjectCard extends HookWidget {
               return Flex(
                 clipBehavior: Clip.none,
                 direction: isWide ? Axis.horizontal : Axis.vertical,
-                spacing: isWide ? 12 : 12,
+                spacing: 12,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -73,8 +73,7 @@ class ImageSlideShowWidget extends HookWidget {
     var pageController = usePageController(initialPage: 300);
     Duration duration = Duration(milliseconds: 1000);
     Curve curve = Curves.fastEaseInToSlowEaseOut;
-    return Expanded(
-
+    return Container(
       child: Stack(
         clipBehavior: Clip.none,
         children: [
@@ -85,7 +84,7 @@ class ImageSlideShowWidget extends HookWidget {
               child: Image.asset(
                 model.imagePaths[index % model.imagePaths.length],
                 filterQuality: FilterQuality.high,
-                // cacheWidth: 250,
+                cacheWidth: 250,
                 fit: BoxFit.contain,
               ),
             ),
