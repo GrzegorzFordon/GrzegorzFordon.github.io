@@ -18,6 +18,7 @@ dependencies:
   auto_size_text:
   transparent_image:
   gif_view:
+  video_player: 
   
 dev_dependencies:
   flutter_test:

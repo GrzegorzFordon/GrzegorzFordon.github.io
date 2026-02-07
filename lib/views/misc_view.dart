@@ -1,16 +1,25 @@
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gif_view/gif_view.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'package:video_player/video_player.dart';
 
 class MiscView extends HookWidget {
   const MiscView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    var pageController = usePageController(initialPage: 100);
+    // var pageController = usePageController(initialPage: 100);
+    var videoIndex = useState(0);
+
+    var videoController = useState(VideoPlayerController.networkUrl(Uri.parse("https://i.imgur.com/SEpYkPT.mp4")));
+
+    videoController.value.initialize();
+    videoController.value.play();
+
     Duration duration = Duration(milliseconds: 500);
     Curve curve = Curves.fastEaseInToSlowEaseOut;
     return Column(
@@ -41,24 +50,39 @@ class MiscView extends HookWidget {
                           height: 200,
                           child: Stack(
                             children: [
-                              PageView.builder(
-                                controller: pageController,
-                                itemBuilder: (context, index) => FadeInImage.memoryNetwork(
-                                  placeholder: kTransparentImage,
-                                  image: "https://i.imgur.com/${gamedevGifUrls[index % gamedevGifUrls.length]}.gif",
+                              Align(
+                                alignment: Alignment.center,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(5),
+                                  child: VideoPlayer(videoController.value),
                                 ),
                               ),
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: IconButton(
-                                  onPressed: () => pageController.previousPage(duration: duration, curve: curve),
+                                  onPressed: () {
+                                    videoIndex.value = (videoIndex.value - 1) % gamedevGifUrls.length;
+                                    videoController.value = VideoPlayerController.networkUrl(
+                                      Uri.parse("https://i.imgur.com/${gamedevGifUrls[videoIndex.value]}.mp4"),
+                                    );
+                                    videoController.value.initialize();
+                                  },
                                   icon: Icon(Icons.arrow_back_ios_rounded),
                                 ),
                               ),
                               Align(
                                 alignment: Alignment.centerRight,
                                 child: IconButton(
-                                  onPressed: () => pageController.nextPage(duration: duration, curve: curve),
+                                  // onPressed: () => pageController.nextPage(duration: duration, curve: curve),
+                                  onPressed: () {
+                                    var oldindex = videoIndex.value;
+                                    videoIndex.value = (videoIndex.value + 1) % gamedevGifUrls.length;
+                                    videoController.value = VideoPlayerController.networkUrl(
+                                      Uri.parse("https://i.imgur.com/${gamedevGifUrls[videoIndex.value]}.mp4"),
+                                    );
+                                    videoController.value.initialize();
+                                    videoController.value.play();
+                                  },
                                   icon: Icon(Icons.arrow_forward_ios_rounded),
                                 ),
                               ),
@@ -82,4 +106,4 @@ List<String> miscText = [
   // "I also do game dev as a hobby",
 ];
 
-List<String> gamedevGifUrls = ["PaxAoNG", "dVqP1Ll","tml4EOk"];
+List<String> gamedevGifUrls = ["SEpYkPT", "SELQywI", "JVxj7R1", "pvO3Kbq", "vSXF4GP", "P5d6bT3", "ZavL3BS"];
