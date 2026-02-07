@@ -119,7 +119,7 @@ class PageViewProfile extends HookWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           IconButton(
-            onPressed: () => pageController.previousPage(duration: duration, curve: curve),
+            onPressed: () => pageController.jumpToPage((pageController.page!-1).toInt()),
             icon: Icon(Icons.arrow_back_ios_rounded),
             color: Theme.of(context).colorScheme.onSurface.withAlpha(100),
           ),
@@ -136,7 +136,7 @@ class PageViewProfile extends HookWidget {
             ),
           ),
           IconButton(
-            onPressed: () => pageController.nextPage(duration: Duration(microseconds: 1), curve: curve),
+            onPressed: () => pageController.jumpToPage((pageController.page!+1).toInt()),
             icon: Icon(Icons.arrow_forward_ios_rounded),
             color: Theme.of(context).colorScheme.onSurface.withAlpha(100),
           ),
