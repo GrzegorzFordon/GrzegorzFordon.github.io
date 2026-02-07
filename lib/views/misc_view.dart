@@ -15,13 +15,9 @@ class MiscView extends HookWidget {
     // var pageController = usePageController(initialPage: 100);
     var videoIndex = useState(0);
 
-    var videoController = useState(VideoPlayerController.networkUrl(Uri.parse("https://i.imgur.com/SEpYkPT.mp4")));
+    var videoController = useState(VideoPlayerController.networkUrl(Uri.parse("https://i.imgur.com/SEpYkPT.mp4"))..initialize());
 
-    videoController.value.initialize();
-    videoController.value.play();
 
-    Duration duration = Duration(milliseconds: 500);
-    Curve curve = Curves.fastEaseInToSlowEaseOut;
     return Column(
       children: [
         Column(
@@ -52,8 +48,10 @@ class MiscView extends HookWidget {
                             children: [
                               Align(
                                 alignment: Alignment.center,
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(5),
+                                child: GestureDetector(
+                                  onTap: videoController.value.value.isPlaying
+                                      ? videoController.value.pause
+                                      : videoController.value.play,
                                   child: VideoPlayer(videoController.value),
                                 ),
                               ),
@@ -66,6 +64,7 @@ class MiscView extends HookWidget {
                                       Uri.parse("https://i.imgur.com/${gamedevGifUrls[videoIndex.value]}.mp4"),
                                     );
                                     videoController.value.initialize();
+                                    videoController.value.play();
                                   },
                                   icon: Icon(Icons.arrow_back_ios_rounded),
                                 ),
