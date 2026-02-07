@@ -15,8 +15,15 @@ class MiscView extends HookWidget {
     // var pageController = usePageController(initialPage: 100);
     var videoIndex = useState(0);
 
-    var videoController = useState(VideoPlayerController.networkUrl(Uri.parse("https://i.imgur.com/SEpYkPT.mp4"))..initialize());
+    var videoController = useState(VideoPlayerController.networkUrl(Uri.parse("https://i.imgur.com/SEpYkPT.mp4")));
 
+    useEffect(() {
+      videoController.value.initialize().then((value) {
+        videoController.value.setVolume(0);
+        videoController.value.setLooping(true);
+        videoController.value.play();
+      });
+    });
 
     return Column(
       children: [
@@ -49,9 +56,9 @@ class MiscView extends HookWidget {
                               Align(
                                 alignment: Alignment.center,
                                 child: GestureDetector(
-                                  onTap: videoController.value.value.isPlaying
-                                      ? videoController.value.pause
-                                      : videoController.value.play,
+                                  onTap: () => videoController.value.value.isPlaying
+                                      ? videoController.value.pause()
+                                      : videoController.value.play(),
                                   child: VideoPlayer(videoController.value),
                                 ),
                               ),
@@ -73,13 +80,13 @@ class MiscView extends HookWidget {
                                 alignment: Alignment.centerRight,
                                 child: IconButton(
                                   // onPressed: () => pageController.nextPage(duration: duration, curve: curve),
-                                  onPressed: () {
+                                  onPressed: () async {
                                     var oldindex = videoIndex.value;
                                     videoIndex.value = (videoIndex.value + 1) % gamedevGifUrls.length;
                                     videoController.value = VideoPlayerController.networkUrl(
                                       Uri.parse("https://i.imgur.com/${gamedevGifUrls[videoIndex.value]}.mp4"),
                                     );
-                                    videoController.value.initialize();
+                                    await videoController.value.initialize();
                                     videoController.value.play();
                                   },
                                   icon: Icon(Icons.arrow_forward_ios_rounded),
