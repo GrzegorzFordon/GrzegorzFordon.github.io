@@ -43,8 +43,8 @@ class ProfileView extends HookWidget {
                   width: 280,
                   child: const Stack(
                     children: [
-                      Expanded(child: PageViewProfile(key: ValueKey(0), isTop: true)),
-                      Expanded(child: PageViewProfile(key: ValueKey(1), isTop: false)),
+                      PageViewProfile(key: ValueKey(0), isTop: true),
+                      PageViewProfile(key: ValueKey(1), isTop: false),
                     ],
                   ),
                 ),
