@@ -14,7 +14,7 @@ class ProfileView extends HookWidget {
       width: 32,
       colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onSurfaceVariant, BlendMode.srcIn),
     );
-    var isSillyHook = useState(false);
+    // var isSillyHook = useState(false);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       spacing: 4,
@@ -39,14 +39,12 @@ class ProfileView extends HookWidget {
                 alignment: Alignment.center,
                 child: Container(
                   clipBehavior: Clip.none,
-                  // color: Colors.blue.withAlpha(100),
                   height: 200,
                   width: 280,
-                  child: Column(
+                  child: const Stack(
                     children: [
-                      Expanded(child: PageViewProfile(key: ValueKey(0),)),
-                      Expanded(child: PageViewProfile(key: ValueKey(1),)),
-                      Expanded(child: PageViewProfile(key: ValueKey(2),)),
+                      Expanded(child: PageViewProfile(key: ValueKey(0), isTop: true)),
+                      Expanded(child: PageViewProfile(key: ValueKey(1), isTop: false)),
                     ],
                   ),
                 ),
@@ -100,38 +98,54 @@ class ProfileButton extends StatelessWidget {
 }
 
 class PageViewProfile extends HookWidget {
-  const PageViewProfile({super.key});
+  final bool isTop;
+  const PageViewProfile({super.key, required this.isTop});
 
   @override
   Widget build(BuildContext context) {
-    var pageController = usePageController(initialPage: 1000, keepPage: true);
+    int startPage = 6 * 7 * 100;
+    var pageController = usePageController(initialPage: startPage, keepPage: true);
     Duration duration = Duration(milliseconds: 500);
     Curve curve = Curves.easeOutBack;
     List<Color> colors = [Colors.transparent.withAlpha(0), Colors.green, Colors.yellow, Colors.red];
     return Container(
       width: 280,
+      // height: 200,
       clipBehavior: Clip.none,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: isTop ? CrossAxisAlignment.start : CrossAxisAlignment.end,
         children: [
-          IconButton(
-            onPressed: () => pageController.previousPage(duration: duration, curve: curve),
-            icon: Icon(Icons.arrow_back_ios_rounded,),
-            color: Theme.of(context).colorScheme.onSurface.withAlpha(100),
+          Transform.translate(
+            offset: Offset(0, isTop ? -50 : 50),
+            child: IconButton(
+              onPressed: () => pageController.previousPage(duration: duration, curve: curve),
+              icon: Icon(Icons.arrow_back_ios_rounded),
+              color: Theme.of(context).colorScheme.onSurface.withAlpha(100),
+            ),
           ),
           SizedBox(
             width: 200,
             child: PageView.builder(
+              key: PageStorageKey(key),
+              pageSnapping: true,
               controller: pageController,
-              itemBuilder: (context, index) => index % colors.length == 0
+              // itemCount: 5,
+              itemBuilder: (context, index) => index % (isTop ? 7 : 6) == 0
                   ? SizedBox()
-                  : Container(color: colors[index % colors.length].withAlpha(100)),
+                  : Container(
+                      color: colors[index % colors.length].withAlpha(00),
+                      child: Image.asset("assets/profile/${isTop ? "top" : "mid"}${index % (isTop ? 7 : 6)}.png"),
+                    ),
             ),
           ),
-          IconButton(
-            onPressed: () => pageController.nextPage(duration: duration, curve: curve),
-            icon: Icon(Icons.arrow_forward_ios_rounded,),
-            color: Theme.of(context).colorScheme.onSurface.withAlpha(100),
+          Transform.translate(
+            offset: Offset(0, isTop ? -50 : 50),
+            child: IconButton(
+              onPressed: () => pageController.nextPage(duration: duration, curve: curve),
+              icon: Icon(Icons.arrow_forward_ios_rounded),
+              color: Theme.of(context).colorScheme.onSurface.withAlpha(100),
+            ),
           ),
         ],
       ),
