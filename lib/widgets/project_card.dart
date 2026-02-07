@@ -17,6 +17,7 @@ class ProjectCard extends HookWidget {
       child: ConstrainedBox(
         constraints: BoxConstraints(maxWidth: 900),
         child: Container(
+          clipBehavior: Clip.none,
           padding: EdgeInsets.all(12.0),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.primaryContainer,
@@ -25,8 +26,9 @@ class ProjectCard extends HookWidget {
           ),
           child: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
-              bool isWide = constraints.maxWidth > 587;
+              bool isWide = constraints.maxWidth > 650;
               return Flex(
+                clipBehavior: Clip.none,
                 direction: isWide ? Axis.horizontal : Axis.vertical,
                 spacing: isWide ? 12 : 12,
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -44,14 +46,14 @@ class ProjectCard extends HookWidget {
                         maxLines: 1,
                       ),
                       ConstrainedBox(
-                        constraints: BoxConstraints(maxWidth: isWide ? 350 : 400),
+                        constraints: BoxConstraints(maxWidth: isWide ? 400 : 400),
                         child: Text(model.paragraph),
                       ),
                       BulletPointsText(bulletPoints: model.bulletpoints),
                       ButtonRow(pageUrlString: model.hostURL, repoUrlString: model.githubURL),
                     ],
                   ),
-                  Container(height: 300, width: 220, child: ImageSlideShowWidget(model: model)),
+                  Container(clipBehavior: Clip.none, height: 300, width: 250, child: ImageSlideShowWidget(model: model)),
                 ],
               );
             },
@@ -71,39 +73,39 @@ class ImageSlideShowWidget extends HookWidget {
     var pageController = usePageController(initialPage: 300);
     Duration duration = Duration(milliseconds: 1000);
     Curve curve = Curves.fastEaseInToSlowEaseOut;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Expanded(
-          child: PageView.builder(
+    return Expanded(
+
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [
+          PageView.builder(
             controller: pageController,
-            itemBuilder: (BuildContext context, int index) => Image.asset(
-              model.imagePaths[index % model.imagePaths.length],
-              filterQuality: FilterQuality.high,
-              cacheWidth: 250,
+            itemBuilder: (BuildContext context, int index) => Container(
+              clipBehavior: Clip.none,
+              child: Image.asset(
+                model.imagePaths[index % model.imagePaths.length],
+                filterQuality: FilterQuality.high,
+                // cacheWidth: 250,
+                fit: BoxFit.contain,
+              ),
             ),
           ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            IconButton(
+          Align(
+            alignment: Alignment.centerLeft,
+            child: IconButton(
               onPressed: () => pageController.previousPage(duration: duration, curve: curve),
               icon: Icon(Icons.arrow_back_ios_rounded, color: Theme.of(context).colorScheme.onSurfaceVariant),
             ),
-            SmoothPageIndicator(
-              controller: pageController,
-              count: model.imagePaths.length,
-              effect: ColorTransitionEffect(),
-              onDotClicked: (index) => pageController.animateToPage(index, duration: duration, curve: curve),
-            ),
-            IconButton(
+          ),
+          Align(
+            alignment: Alignment.centerRight,
+            child: IconButton(
               onPressed: () => pageController.nextPage(duration: duration, curve: curve),
               icon: Icon(Icons.arrow_forward_ios_rounded, color: Theme.of(context).colorScheme.onSurfaceVariant),
             ),
-          ],
-        ),
-      ],
+          ),
+        ],
+      ),
     );
   }
 }
@@ -169,4 +171,3 @@ class ButtonRow extends StatelessWidget {
     if (!await launchUrl(uri)) throw Exception("Could not launch url");
   }
 }
-

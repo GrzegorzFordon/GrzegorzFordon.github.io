@@ -12,10 +12,13 @@ class MiscView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var pageController = usePageController(initialPage: 100);
+    var pageController = usePageController(initialPage: 100);
     var videoIndex = useState(0);
 
     var videoController = useState(VideoPlayerController.networkUrl(Uri.parse("https://i.imgur.com/SEpYkPT.mp4")));
+
+    Duration duration = Duration(milliseconds: 1000);
+    Curve curve = Curves.fastEaseInToSlowEaseOut;
 
     useEffect(() {
       videoController.value.initialize().then((value) {
@@ -55,40 +58,48 @@ class MiscView extends HookWidget {
                             children: [
                               Align(
                                 alignment: Alignment.center,
-                                child: GestureDetector(
-                                  onTap: () => videoController.value.value.isPlaying
-                                      ? videoController.value.pause()
-                                      : videoController.value.play(),
-                                  child: VideoPlayer(videoController.value),
+                                // child: VideoPlayer(videoController.value),
+                                child: PageView.builder(
+                                  controller: pageController,
+                                  itemBuilder: (context, index) {
+                                    VideoPlayerController controller = VideoPlayerController.networkUrl(
+                                      Uri.parse("https://i.imgur.com/${gamedevGifUrls[index%gamedevGifUrls.length]}.mp4"),
+                                    );
+
+                                    controller.initialize();
+                                    controller.play();
+                                    return VideoPlayer(controller);
+                                  },
                                 ),
                               ),
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: IconButton(
-                                  onPressed: () {
-                                    videoIndex.value = (videoIndex.value - 1) % gamedevGifUrls.length;
-                                    videoController.value = VideoPlayerController.networkUrl(
-                                      Uri.parse("https://i.imgur.com/${gamedevGifUrls[videoIndex.value]}.mp4"),
-                                    );
-                                    videoController.value.initialize();
-                                    videoController.value.play();
-                                  },
+                                  onPressed: () => pageController.previousPage(duration: duration, curve: curve),
+                                  // onPressed: () {
+                                  //   videoIndex.value = (videoIndex.value - 1) % gamedevGifUrls.length;
+                                  //   videoController.value = VideoPlayerController.networkUrl(
+                                  //     Uri.parse("https://i.imgur.com/${gamedevGifUrls[videoIndex.value]}.mp4"),
+                                  //   );
+                                  //   videoController.value.initialize();
+                                  //   videoController.value.play();
+                                  // },
                                   icon: Icon(Icons.arrow_back_ios_rounded),
                                 ),
                               ),
                               Align(
                                 alignment: Alignment.centerRight,
                                 child: IconButton(
-                                  // onPressed: () => pageController.nextPage(duration: duration, curve: curve),
-                                  onPressed: () async {
-                                    var oldindex = videoIndex.value;
-                                    videoIndex.value = (videoIndex.value + 1) % gamedevGifUrls.length;
-                                    videoController.value = VideoPlayerController.networkUrl(
-                                      Uri.parse("https://i.imgur.com/${gamedevGifUrls[videoIndex.value]}.mp4"),
-                                    );
-                                    await videoController.value.initialize();
-                                    videoController.value.play();
-                                  },
+                                  onPressed: () => pageController.nextPage(duration: duration, curve: curve),
+                                  // onPressed: () async {
+                                  //   var oldindex = videoIndex.value;
+                                  //   videoIndex.value = (videoIndex.value + 1) % gamedevGifUrls.length;
+                                  //   videoController.value = VideoPlayerController.networkUrl(
+                                  //     Uri.parse("https://i.imgur.com/${gamedevGifUrls[videoIndex.value]}.mp4"),
+                                  //   );
+                                  //   await videoController.value.initialize();
+                                  //   videoController.value.play();
+                                  // },
                                   icon: Icon(Icons.arrow_forward_ios_rounded),
                                 ),
                               ),
