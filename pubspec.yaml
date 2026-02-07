@@ -16,6 +16,8 @@ dependencies:
   flutter_hooks:
   url_launcher:
   auto_size_text:
+  transparent_image:
+  gif_view:
   
 dev_dependencies:
   flutter_test:

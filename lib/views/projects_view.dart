@@ -10,9 +10,9 @@ class ProjectsView extends StatelessWidget {
     ProjectModel modelPromptwist = ProjectModel(
       title: "PrompTwist!",
       paragraph:
-          "Stuck on a blank page? Try PrompTwist! Idea sparker that combines random word generators with random color palettes, guaranteing a new idea each time.",
+          "Stuck on a blank page? Try PrompTwist! Responsive idea sparker that combines random word generators with random color palettes, guaranteing a new idea each time.",
       bulletpoints: [
-        "State Management with Riverpod",
+        "State management with Riverpod",
         "Cross platform - Released for Web, Mobile and Desktop",
         // "last one, short",
         // "four and five and six and",
@@ -30,10 +30,10 @@ class ProjectsView extends StatelessWidget {
     ProjectModel modelSubmeowsions = ProjectModel(
       title: "Sub-meow-sions",
       paragraph:
-          "This is a paragraph describing the app. It is going to have around this many word? No, I lied, more like another sentence like this one. This should be enough.",
+          "My partner asked me to create a simple solution for keeping track of his art submission to magazines.\r Submeowsions holds a database of works, publishers and submissions with quick options for accessing and editing as well as a statistics page with summaries of recent results.",
       bulletpoints: [
-        "State Management with Riverpod",
-        "SQL Database with Drift",
+        "State management with Riverpod",
+        "SQL database with Drift",
         "Navigation with GoRouter",
         // "four and five and six and",
         // "new last one that has a bit more to say",
@@ -50,10 +50,10 @@ class ProjectsView extends StatelessWidget {
     ProjectModel modelStitchintime = ProjectModel(
       title: "Stitchin' Time",
       paragraph:
-          "This is a paragraph describing the app. It is going to have around this many word? No, I lied, more like another sentence like this one. This should be enough.",
+          "Cross-platform app for color chart creation. Create charts using a fully-fledged pixel art editor, then switch to the reader screen to use the same app when it comes time to knit/crochet the chart.",
       bulletpoints: [
-        "State Management with Riverpod",
-        "Local Storage with Hive",
+        "State management with Riverpod",
+        "Local storage and autosave with Hive",
         // "last one, short",
         // "four and five and six and",
         // "new last one that has a bit more to say",

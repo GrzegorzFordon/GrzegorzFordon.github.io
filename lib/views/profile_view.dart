@@ -15,61 +15,58 @@ class ProfileView extends HookWidget {
       colorFilter: ColorFilter.mode(Theme.of(context).colorScheme.onSurfaceVariant, BlendMode.srcIn),
     );
     // var isSillyHook = useState(false);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      spacing: 4,
-      children: [
-        Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(5),
-                  boxShadow: [BoxShadow(offset: Offset(5, 5), color: Theme.of(context).colorScheme.surfaceContainer)],
-                ),
-                width: 200,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
-                  child: Image.asset("assets/profile.png", filterQuality: FilterQuality.high),
-                ),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Container(
-                  clipBehavior: Clip.none,
-                  height: 200,
-                  width: 280,
-                  child: const Stack(
-                    children: [
-                      PageViewProfile(key: ValueKey(0), isTop: true),
-                      PageViewProfile(key: ValueKey(1), isTop: false),
-                    ],
+    return FittedBox(
+      fit: BoxFit.fitWidth,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        spacing: 4,
+        children: [
+          Container(
+            // decoration: BoxDecoration(borderRadius: BorderRadius.circular(5)),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    boxShadow: [BoxShadow(offset: Offset(5, 5), color: Theme.of(context).colorScheme.surfaceContainer)],
+                  ),
+                  width: 200,
+                  // height: 200,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(5),
+                    child: Image.asset("assets/profile.png", filterQuality: FilterQuality.high),
                   ),
                 ),
+                // Image.asset("assets/profile.png", filterQuality: FilterQuality.high),
+                Column(
+                  children: [
+                    PageViewProfile(key: ValueKey(0), isTop: true),
+                    PageViewProfile(key: ValueKey(1), isTop: false),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ProfileButton(
+                tooltip: "mail",
+                iconData: Icons.mail_rounded,
+                callback: () => _launchUrl("mailto:grzegorz.fordon+github@gmail.com"),
               ),
+              IconButton(
+                onPressed: () => _launchUrl("https://github.com/GrzegorzFordon"),
+                icon: githubIcon,
+                color: Theme.of(context).colorScheme.secondary,
+                tooltip: "github",
+              ),
+              ProfileButton(tooltip: "resume", iconData: Icons.download_rounded, callback: null),
             ],
           ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ProfileButton(
-              tooltip: "mail",
-              iconData: Icons.mail_rounded,
-              callback: () => _launchUrl("mailto:grzegorz.fordon+github@gmail.com"),
-            ),
-            IconButton(
-              onPressed: () => _launchUrl("https://github.com/GrzegorzFordon"),
-              icon: githubIcon,
-              color: Theme.of(context).colorScheme.secondary,
-              tooltip: "github",
-            ),
-            ProfileButton(tooltip: "resume", iconData: Icons.download_rounded, callback: null),
-          ],
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -103,49 +100,45 @@ class PageViewProfile extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    int startPage = 6 * 7 * 100;
+    int topAmount = 6;
+    int bottomAmount = 6;
+
+    int startPage = topAmount * bottomAmount * 100;
     var pageController = usePageController(initialPage: startPage, keepPage: true);
     Duration duration = Duration(milliseconds: 500);
     Curve curve = Curves.easeOutBack;
-    List<Color> colors = [Colors.transparent.withAlpha(0), Colors.green, Colors.yellow, Colors.red];
     return Container(
-      width: 280,
-      // height: 200,
-      clipBehavior: Clip.none,
+      // constraints: BoxConstraints(maxWidth: 280, maxHeight: 200),
+      // width: 280,
+      height: 100,
+      // clipBehavior: Clip.none,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        // mainAxisSize: MainAxisSize.min,
         // crossAxisAlignment: isTop ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Transform.translate(
-            offset: Offset(0, isTop ? -50 : 50),
-            child: IconButton(
-              onPressed: () => pageController.previousPage(duration: duration, curve: curve),
-              icon: Icon(Icons.arrow_back_ios_rounded),
-              color: Theme.of(context).colorScheme.onSurface.withAlpha(100),
-            ),
+          IconButton(
+            onPressed: () => pageController.previousPage(duration: duration, curve: curve),
+            icon: Icon(Icons.arrow_back_ios_rounded),
+            color: Theme.of(context).colorScheme.onSurface.withAlpha(100),
           ),
-          SizedBox(
+          Container(
             width: 200,
             child: PageView.builder(
               key: PageStorageKey(key),
               pageSnapping: true,
               controller: pageController,
               // itemCount: 5,
-              itemBuilder: (context, index) => index % (isTop ? 7 : 6) == 0
+              itemBuilder: (context, index) => index % (isTop ? topAmount : bottomAmount) == 0
                   ? SizedBox()
-                  : Container(
-                      color: colors[index % colors.length].withAlpha(00),
-                      child: Image.asset("assets/profile/${isTop ? "top" : "mid"}${index % (isTop ? 7 : 6)}.png"),
-                    ),
+                  : Image.asset("assets/profile/${isTop ? "top" : "mid"}${index % (isTop ? topAmount : bottomAmount)}.png"),
             ),
           ),
-          Transform.translate(
-            offset: Offset(0, isTop ? -50 : 50),
-            child: IconButton(
-              onPressed: () => pageController.nextPage(duration: duration, curve: curve),
-              icon: Icon(Icons.arrow_forward_ios_rounded),
-              color: Theme.of(context).colorScheme.onSurface.withAlpha(100),
-            ),
+          IconButton(
+            onPressed: () => pageController.nextPage(duration: Duration(microseconds: 1), curve: curve),
+            icon: Icon(Icons.arrow_forward_ios_rounded),
+            color: Theme.of(context).colorScheme.onSurface.withAlpha(100),
           ),
         ],
       ),

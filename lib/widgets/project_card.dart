@@ -52,30 +52,6 @@ class ProjectCard extends HookWidget {
                     ],
                   ),
                   Container(height: 300, width: 220, child: ImageSlideShowWidget(model: model)),
-                  // Container(
-                  //   height: isWide ? 250 : 350,
-                  //   width: isWide ? 250 : double.infinity,
-                  //   child: isWide
-                  //       ? ImageSlideShowWidget(model: model)
-                  //       : Container(
-                  //           padding: EdgeInsets.all(8.0),
-                  //           constraints: BoxConstraints(maxWidth: 30),
-                  //           child: FittedBox(
-                  //             clipBehavior: Clip.antiAlias,
-                  //             fit: BoxFit.contain,
-                  //             child: Row(
-                  //               spacing: 24.0,
-                  //               mainAxisAlignment: MainAxisAlignment.start,
-                  //               crossAxisAlignment: CrossAxisAlignment.start,
-                  //               children: [
-                  //                 Image.asset(model.imagePaths[0], filterQuality: FilterQuality.high),
-                  //                 // Image.asset(model.imagePaths[1], filterQuality: FilterQuality.high),
-                  //                 // Image.asset(model.imagePaths[2], filterQuality: FilterQuality.high),
-                  //               ],
-                  //             ),
-                  //           ),
-                  //         ),
-                  // ),
                 ],
               );
             },
@@ -92,7 +68,7 @@ class ImageSlideShowWidget extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var pageController = usePageController();
+    var pageController = usePageController(initialPage: 300);
     Duration duration = Duration(milliseconds: 1000);
     Curve curve = Curves.fastEaseInToSlowEaseOut;
     return Column(
@@ -113,7 +89,7 @@ class ImageSlideShowWidget extends HookWidget {
           children: [
             IconButton(
               onPressed: () => pageController.previousPage(duration: duration, curve: curve),
-              icon: Icon(Icons.arrow_back_rounded, color: Theme.of(context).colorScheme.surface),
+              icon: Icon(Icons.arrow_back_ios_rounded, color: Theme.of(context).colorScheme.onSurfaceVariant),
             ),
             SmoothPageIndicator(
               controller: pageController,
@@ -123,7 +99,7 @@ class ImageSlideShowWidget extends HookWidget {
             ),
             IconButton(
               onPressed: () => pageController.nextPage(duration: duration, curve: curve),
-              icon: Icon(Icons.arrow_forward_rounded, color: Theme.of(context).colorScheme.surface),
+              icon: Icon(Icons.arrow_forward_ios_rounded, color: Theme.of(context).colorScheme.onSurfaceVariant),
             ),
           ],
         ),
@@ -194,23 +170,3 @@ class ButtonRow extends StatelessWidget {
   }
 }
 
-class ImageCarousel extends HookWidget {
-  final List<String> imagePaths;
-  const ImageCarousel({super.key, required this.imagePaths});
-
-  @override
-  Widget build(BuildContext context) {
-    var controller = useCarouselController();
-
-    return CarouselView.weighted(
-      flexWeights: [1, 1, 1],
-      controller: controller,
-      onTap: (value) => controller.animateToItem(value, duration: Duration(milliseconds: 500)),
-      children: [
-        Image.asset(imagePaths[0], filterQuality: FilterQuality.high, fit: BoxFit.fitHeight),
-        Image.asset(imagePaths[1], filterQuality: FilterQuality.high, fit: BoxFit.fitHeight),
-        Image.asset(imagePaths[2], filterQuality: FilterQuality.high, fit: BoxFit.fitHeight),
-      ],
-    );
-  }
-}
