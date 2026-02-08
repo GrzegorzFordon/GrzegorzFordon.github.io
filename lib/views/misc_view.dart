@@ -13,7 +13,6 @@ class MiscView extends HookWidget {
   @override
   Widget build(BuildContext context) {
     var pageController = usePageController(initialPage: 100);
-    var videoIndex = useState(0);
 
     var videoController = useState(VideoPlayerController.networkUrl(Uri.parse("https://i.imgur.com/SEpYkPT.mp4")));
 
@@ -24,6 +23,7 @@ class MiscView extends HookWidget {
       videoController.value.initialize().then((value) {
         videoController.value.setVolume(0);
         videoController.value.setLooping(true);
+        videoController.value.play();
       });
     });
 
@@ -60,20 +60,27 @@ class MiscView extends HookWidget {
                                 // child: VideoPlayer(videoController.value),
                                 child: PageView.builder(
                                   controller: pageController,
+                                  onPageChanged: (value) {
+                                    videoController.value.initialize().then((value) {
+                                      videoController.value.setVolume(0);
+                                      videoController.value.setLooping(true);
+                                      videoController.value.play();
+                                    });
+                                  },
                                   itemBuilder: (context, index) {
-                                    videoController.value = VideoPlayerController.networkUrl(
+                                   var videoController = VideoPlayerController.networkUrl(
                                       Uri.parse(
                                         "https://i.imgur.com/${gamedevGifUrls[index % gamedevGifUrls.length]}.mp4",
                                       ),
                                     );
 
-                                    videoController.value.initialize().then((value) {
-                                      videoController.value.setVolume(0);
-                                      videoController.value.setLooping(true);
-                                      return videoController.value.play();
+                                    videoController.initialize().then((value) {
+                                      videoController.setVolume(0);
+                                      videoController.setLooping(true);
+                                      videoController.play();
                                     });
                                     // controller.play();
-                                    return VideoPlayer(videoController.value);
+                                    return VideoPlayer(videoController);
                                   },
                                 ),
                               ),
