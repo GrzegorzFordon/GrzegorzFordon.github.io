@@ -3,8 +3,8 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"assets/AssetManifest.bin": "d6a2cdecf6d94ab0557cec1aebb4dc62",
-"assets/AssetManifest.bin.json": "509eae580d9639375ae8040961d97f49",
+const RESOURCES = {"assets/AssetManifest.bin": "2408078cc1961184d1708999589b4ada",
+"assets/AssetManifest.bin.json": "fc43ce29e475d810cb098da97d5f4f35",
 "assets/assets/icon/github.png": "f76f154cd69056fce4ffb86d55f5676a",
 "assets/assets/icon/GitHub_Invertocat_White_Clearspace.png": "e94e583c9cf89d228743c2d715ca287c",
 "assets/assets/icon/GitHub_Invertocat_White_Clearspace.svg": "1d63d45aea9690a0f86cc1a2a5972e8f",
@@ -22,12 +22,6 @@ const RESOURCES = {"assets/AssetManifest.bin": "d6a2cdecf6d94ab0557cec1aebb4dc62
 "assets/assets/screens/promptwist_categories.png": "905a372733b641e666c220fcf00e59ad",
 "assets/assets/screens/promptwist_home.png": "33e5f1f5952e0bbfc963e1f966fb7add",
 "assets/assets/screens/promptwist_wide.png": "bb38e5a810275f0cbb6a09a45386a41e",
-"assets/assets/screens/stitchintime01.PNG": "98b166d027ed109739ec2e9f9e5b8212",
-"assets/assets/screens/stitchintime02.PNG": "f07aa226304dec7fc81a7fde258d754c",
-"assets/assets/screens/stitchintime03.PNG": "28e4c7981bdafcacb0f5f68b491eac51",
-"assets/assets/screens/submeowsions01.PNG": "b318ad186afca8d99651f2fd29a128b5",
-"assets/assets/screens/submeowsions02.PNG": "789916820ea6959fa45673f2edea3d24",
-"assets/assets/screens/submeowsions03.PNG": "f24cf9669b10da9b97ff65a4d2ddd3e8",
 "assets/FontManifest.json": "c75353fbeebcd695f0652f190c83d46c",
 "assets/fonts/MaterialIcons-Regular.otf": "02196e41dd079624f8fd13da2b5fd2cf",
 "assets/NOTICES": "d157fc61bec409062fc38618f78291ee",
@@ -50,7 +44,7 @@ const RESOURCES = {"assets/AssetManifest.bin": "d6a2cdecf6d94ab0557cec1aebb4dc62
 "canvaskit/skwasm_heavy.wasm": "b0be7910760d205ea4e011458df6ee01",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
 "flutter.js": "24bc71911b75b5f8135c949e27a2984e",
-"flutter_bootstrap.js": "aa61dae9d4548df97fd35328f3edbbdc",
+"flutter_bootstrap.js": "105343c324f9c60ca62ef2c133f0664d",
 "fonts/customIcons.ttf": "b05dca8299342a3abbdaef87a4188009",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
