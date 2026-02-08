@@ -8,9 +8,9 @@ class ProjectsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ProjectModel modelPromptwist = ProjectModel(
-      title: "PrompTwist!",
+      title: "PrompTwist",
       paragraph:
-          "Stuck on a blank page? Try PrompTwist! Responsive idea sparker that combines random word generators with random color palettes, guaranteing a new idea each time.",
+          "Stuck on a blank page? Try PrompTwist! A modular, responsive app that combines random themes with random color palettes for a fresh idea each time.",
       bulletpoints: [
         "State management with Riverpod",
         "Cross platform - Released for Web, Mobile and Desktop",
@@ -25,9 +25,9 @@ class ProjectsView extends StatelessWidget {
     );
 
     ProjectModel modelSubmeowsions = ProjectModel(
-      title: "Sub-meow-sions",
+      title: "Submeowsions",
       paragraph:
-          "My partner asked me to create a simple solution for keeping track of his art submission to magazines.\r Submeowsions holds a database of works, publishers and submissions with quick options for accessing and editing as well as a statistics page with summaries of recent results.",
+          "My partner asked me to create a simple solution for keeping track of submissions to art/literature magazines. Submeowsions lets you curate your own database of works, publishers and submissions with quick options for accessing and editing submission data as well as a statistics page.",
       bulletpoints: [
         "State management with Riverpod",
         "SQL database with Drift",
@@ -45,7 +45,7 @@ class ProjectsView extends StatelessWidget {
     ProjectModel modelStitchintime = ProjectModel(
       title: "Stitchin' Time",
       paragraph:
-          "Cross-platform app for color chart creation. Create charts using a fully-fledged pixel art editor, then switch to the reader screen to use the same app when it comes time to knit/crochet the chart.",
+          "Cross platform app for knitters/crocheters. Create charts using a fully-fledged pixel art editor, then switch to the row counter screen once ready to craft to let the app keep track of your progress.",
       bulletpoints: [
         "State management with Riverpod",
         "Local storage and autosave with Hive",

@@ -29,7 +29,7 @@ class AboutView extends StatelessWidget {
             text: TextSpan(
               style: textStyle.copyWith(fontSize: 20),
               children: [
-                TextSpan(text: "A full-Stack Developer with a focus on the "),
+                TextSpan(text: "A full-stack developer with a focus on the "),
                 WidgetSpan(child: Icon(Symbols.flutter_rounded, color: textStyle.color)),
                 TextSpan(text: " Flutter framework."),
               ],

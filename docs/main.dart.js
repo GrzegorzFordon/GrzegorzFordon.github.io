@@ -74553,7 +74553,7 @@ j(a){var s=this
 return"ProjectModel(title: "+s.a+", paragraph: "+s.b+", bulletpoints: "+A.k(s.gBT())+", imagePaths: "+A.k(s.gwL())+", githubURL: "+s.e+", hostURL: "+s.f+")"}}
 A.uY.prototype={
 L(a){var s=null,r=A.ii(s,s,A.ae(a).ax.k3,s,s,s,s,s,s,s,s,46,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),q=A.ei("Hi! I'm Grzegorz.",2,B.yb,s,r,B.ee),p=r.ab7(20),o=r.b
-p=A.a8f(s,s,3,B.yb,s,s,!0,s,A.p8(A.b([A.p8(s,s,s,"A full-Stack Developer with a focus on the "),new A.pp(A.k5(B.FL,o,s),B.fA,s,s),A.p8(s,s,s," Flutter framework.")],t.VO),s,p,s),B.aq,s,s,B.bE,B.bg)
+p=A.a8f(s,s,3,B.yb,s,s,!0,s,A.p8(A.b([A.p8(s,s,s,"A full-stack developer with a focus on the "),new A.pp(A.k5(B.FL,o,s),B.fA,s,s),A.p8(s,s,s," Flutter framework.")],t.VO),s,p,s),B.aq,s,s,B.bE,B.bg)
 return A.dT(A.dc(A.b([q,p,A.ei("Based in Berlin, Germany",2,s,s,r.Ci(o==null?s:o.dd(150),20),B.aq)],t.E),B.ac,B.ce,B.Z,5),B.u,new A.aj(400,800,0,1/0),s,s,s,s,s)}}
 A.HD.prototype={
 L(a){var s=null,r=A.ae(a).ax,q=r.p4
@@ -74687,7 +74687,7 @@ A.yJ.prototype={
 L(a){var s,r="State management with Riverpod",q=null,p=t.s,o=A.b([r,"Cross platform - Released for Web, Mobile and Desktop"],p),n=A.b(["assets/screens/promptwist_home.png","assets/screens/promptwist_categories.png","assets/screens/promptwist_wide.png"],p),m=A.b([r,"SQL database with Drift","Navigation with GoRouter"],p),l=A.b(["assets/screens/submeowsions_a.png","assets/screens/submeowsions_b.png","assets/screens/submeowsions_c.png"],p),k=A.b([r,"Local storage and autosave with Hive"],p)
 p=A.b(["assets/screens/stitchintime_a.png","assets/screens/stitchintime_b.png","assets/screens/stitchintime_c.png"],p)
 s=t.E
-return A.dT(A.dc(A.b([A.ei("Projects",q,q,q,A.ii(q,q,q,q,q,q,q,q,q,q,q,20,q,q,q,q,q,!0,q,q,q,q,q,q,q,q),B.aq),A.dc(A.b([new A.rB(new A.ub("PrompTwist!","Stuck on a blank page? Try PrompTwist! Responsive idea sparker that combines random word generators with random color palettes, guaranteing a new idea each time.",o,n,"https://github.com/GrzegorzFordon/promptwist","https://grzegorzfordon.github.io/promptwist/"),q),new A.rB(new A.ub("Stitchin' Time","Cross-platform app for color chart creation. Create charts using a fully-fledged pixel art editor, then switch to the reader screen to use the same app when it comes time to knit/crochet the chart.",k,p,"https://github.com/GrzegorzFordon/stitchin_time","https://grzegorzfordon.github.io/stitchin_time/"),q),new A.rB(new A.ub("Sub-meow-sions","My partner asked me to create a simple solution for keeping track of his art submission to magazines.\r Submeowsions holds a database of works, publishers and submissions with quick options for accessing and editing as well as a statistics page with summaries of recent results.",m,l,"https://github.com/GrzegorzFordon/submeowsions",""),q)],s),B.ac,B.Y,B.Z,24)],s),B.ac,B.Y,B.Z,4),B.u,q,q,q,q,q,q)}}
+return A.dT(A.dc(A.b([A.ei("Projects",q,q,q,A.ii(q,q,q,q,q,q,q,q,q,q,q,20,q,q,q,q,q,!0,q,q,q,q,q,q,q,q),B.aq),A.dc(A.b([new A.rB(new A.ub("PrompTwist","Stuck on a blank page? Try PrompTwist! A modular, responsive app that combines random themes with random color palettes for a fresh idea each time.",o,n,"https://github.com/GrzegorzFordon/promptwist","https://grzegorzfordon.github.io/promptwist/"),q),new A.rB(new A.ub("Stitchin' Time","Cross platform app for knitters/crocheters. Create charts using a fully-fledged pixel art editor, then switch to the row counter screen once ready to craft to let the app keep track of your progress.",k,p,"https://github.com/GrzegorzFordon/stitchin_time","https://grzegorzfordon.github.io/stitchin_time/"),q),new A.rB(new A.ub("Submeowsions","My partner asked me to create a simple solution for keeping track of submissions to art/literature magazines. Submeowsions lets you curate your own database of works, publishers and submissions with quick options for accessing and editing submission data as well as a statistics page.",m,l,"https://github.com/GrzegorzFordon/submeowsions",""),q)],s),B.ac,B.Y,B.Z,24)],s),B.ac,B.Y,B.Z,4),B.u,q,q,q,q,q,q)}}
 A.A3.prototype={
 L(a){var s=null
 return A.dc(A.b([A.ei("Skills",s,s,s,A.ii(s,s,s,s,s,s,s,s,s,s,s,20,s,s,s,s,s,!0,s,s,s,s,s,s,s,s),B.aq),A.ao1(new A.aaJ())],t.E),B.ac,B.Y,B.Z,4)}}
@@ -83738,7 +83738,7 @@ $.aEV=A.b([35,30,20,25,30,35,30,25,25],t.n)
 $.hP=function(){var s=t.n
 return A.b([A.b([0.41233895,0.35762064,0.18051042],s),A.b([0.2126,0.7152,0.0722],s),A.b([0.01932141,0.11916382,0.95034478],s)],t.zg)}()
 $.qu=A.b([95.047,100,108.883],t.n)
-$.aLq=A.b(["In my free time I enjoy playing board games and cooking with friends. Some of my current favourites to play are Scythe, Root and the Arkham Horror LCG. :)","I admin a game development-focused Discord server that puts a big focus on helping new developers gain their skills quickly.","I also do game dev as a hobby"],t.s)
+$.aLq=A.b(["In my free time I enjoy playing board games and cooking with friends. Some of my current favourites to play are Scythe, Coup and the Android: Netrunner CCG. :)","I admin a game development-focused Discord server that puts a big focus on helping new developers gain their skills quickly.","I also do game dev as a hobby."],t.s)
 $.aKV=A.b(["SEpYkPT","SELQywI","JVxj7R1","pvO3Kbq","vSXF4GP","P5d6bT3","ZavL3BS"],t.s)
 $.aM7=A.b(["Riverpod","BLoC","Freezed","Hooks","Firebase"],t.s)
 $.aM4=A.b(["GraphQL","REST","Web Sockets"],t.s)
