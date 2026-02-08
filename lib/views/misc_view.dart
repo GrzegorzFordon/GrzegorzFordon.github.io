@@ -31,7 +31,7 @@ class MiscView extends HookWidget {
         videoController.value.setLooping(true);
         videoController.value.play();
       });
-    });
+    },[videoController.value]);
 
     return Column(
       children: [
@@ -77,8 +77,10 @@ class MiscView extends HookWidget {
                                 alignment: Alignment.center,
                                 // child: VideoPlayer(videoController.value),
                                 child: PageView.builder(
+                                  
                                   controller: pageController,
                                   onPageChanged: (value) {
+                                    videoController.dispose();
                                     videoController.value.initialize().then((
                                       value,
                                     ) {
@@ -108,10 +110,14 @@ class MiscView extends HookWidget {
                               Align(
                                 alignment: Alignment.centerLeft,
                                 child: IconButton(
-                                  onPressed: () => pageController.previousPage(
+                                  onPressed: () {
+                                    videoController.value.dispose();
+
+                                    pageController.previousPage(
                                     duration: duration,
                                     curve: curve,
-                                  ),
+                                  );
+                                  },
                                   // onPressed: () {
                                   //   videoIndex.value = (videoIndex.value - 1) % gamedevGifUrls.length;
                                   //   videoController.value = VideoPlayerController.networkUrl(
@@ -126,10 +132,14 @@ class MiscView extends HookWidget {
                               Align(
                                 alignment: Alignment.centerRight,
                                 child: IconButton(
-                                  onPressed: () => pageController.nextPage(
+                                  onPressed: () {
+                                    videoController.value.dispose();
+
+                                    pageController.nextPage(
                                     duration: duration,
                                     curve: curve,
-                                  ),
+                                  );
+                                  },
                                   // onPressed: () async {
                                   //   var oldindex = videoIndex.value;
                                   //   videoIndex.value = (videoIndex.value + 1) % gamedevGifUrls.length;
