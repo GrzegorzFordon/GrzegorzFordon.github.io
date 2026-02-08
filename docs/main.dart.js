@@ -74574,7 +74574,7 @@ A.IJ.prototype={
 L(a){var s=null,r=t.E
 return A.dc(A.b([A.ks(A.b([new A.nA(5,B.iF,new A.uY(s),s),new A.yH(s)],r),B.X,B.dU,24),A.ks(A.b([new A.nA(3,B.iF,new A.yJ(s),s),new A.nA(2,B.iF,A.dc(A.b([new A.A3(s),new A.xT(s)],r),B.X,B.Y,B.Z,50),s)],r),B.ac,B.j9,24)],r),B.X,B.ce,B.Z,42)}}
 A.xT.prototype={
-L(a){var s,r,q,p,o,n,m,l,k=null,j=A.apO(100,!0),i=A.au1(A.hx("https://i.imgur.com/SEpYkPT.mp4",0,k))
+L(a){var s,r,q,p,o,n,m,l,k=null,j=A.apO(700,!0),i=A.au1(A.hx("https://i.imgur.com/SEpYkPT.mp4",0,k))
 i=$.HX.Bm(new A.ul(i,k,t.Hm),t.es)
 s=A.cr(0,1000)
 $.HX.Bm(new A.BZ(new A.a4E(i),k),t.H)
@@ -74684,8 +74684,8 @@ r.toString
 return s.R4(B.c.eI(r+1))},
 $S:0}
 A.yJ.prototype={
-L(a){var s,r="State management with Riverpod",q=null,p=t.s,o=A.b([r,"Cross platform - Released for Web, Mobile and Desktop"],p),n=A.b(["assets/screens/promptwist_home.png","assets/screens/promptwist_categories.png","assets/screens/promptwist_wide.png"],p),m=A.b([r,"SQL database with Drift","Navigation with GoRouter"],p),l=A.b(["assets/screens/submeowsions01.png","assets/screens/submeowsions02.png","assets/screens/submeowsions03.png"],p),k=A.b([r,"Local storage and autosave with Hive"],p)
-p=A.b(["assets/screens/stitchintime01.png","assets/screens/stitchintime02.png","assets/screens/stitchintime03.png"],p)
+L(a){var s,r="State management with Riverpod",q=null,p=t.s,o=A.b([r,"Cross platform - Released for Web, Mobile and Desktop"],p),n=A.b(["assets/screens/promptwist_home.png","assets/screens/promptwist_categories.png","assets/screens/promptwist_wide.png"],p),m=A.b([r,"SQL database with Drift","Navigation with GoRouter"],p),l=A.b(["assets/screens/submeowsions_a.png","assets/screens/submeowsions_b.png","assets/screens/submeowsions_c.png"],p),k=A.b([r,"Local storage and autosave with Hive"],p)
+p=A.b(["assets/screens/stitchintime_a.png","assets/screens/stitchintime_b.png","assets/screens/stitchintime_c.png"],p)
 s=t.E
 return A.dT(A.dc(A.b([A.ei("Projects",q,q,q,A.ii(q,q,q,q,q,q,q,q,q,q,q,20,q,q,q,q,q,!0,q,q,q,q,q,q,q,q),B.aq),A.dc(A.b([new A.rB(new A.ub("PrompTwist!","Stuck on a blank page? Try PrompTwist! Responsive idea sparker that combines random word generators with random color palettes, guaranteing a new idea each time.",o,n,"https://github.com/GrzegorzFordon/promptwist","https://grzegorzfordon.github.io/promptwist/"),q),new A.rB(new A.ub("Stitchin' Time","Cross-platform app for color chart creation. Create charts using a fully-fledged pixel art editor, then switch to the reader screen to use the same app when it comes time to knit/crochet the chart.",k,p,"https://github.com/GrzegorzFordon/stitchin_time","https://grzegorzfordon.github.io/stitchin_time/"),q),new A.rB(new A.ub("Sub-meow-sions","My partner asked me to create a simple solution for keeping track of his art submission to magazines.\r Submeowsions holds a database of works, publishers and submissions with quick options for accessing and editing as well as a statistics page with summaries of recent results.",m,l,"https://github.com/GrzegorzFordon/submeowsions",""),q)],s),B.ac,B.Y,B.Z,24)],s),B.ac,B.Y,B.Z,4),B.u,q,q,q,q,q,q)}}
 A.A3.prototype={

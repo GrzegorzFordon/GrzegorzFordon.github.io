@@ -14,9 +14,6 @@ class ProjectsView extends StatelessWidget {
       bulletpoints: [
         "State management with Riverpod",
         "Cross platform - Released for Web, Mobile and Desktop",
-        // "last one, short",
-        // "four and five and six and",
-        // "new last one that has a bit more to say",
       ],
       imagePaths: [
         "assets/screens/promptwist_home.png",
@@ -35,13 +32,11 @@ class ProjectsView extends StatelessWidget {
         "State management with Riverpod",
         "SQL database with Drift",
         "Navigation with GoRouter",
-        // "four and five and six and",
-        // "new last one that has a bit more to say",
       ],
       imagePaths: [
-        "assets/screens/submeowsions01.png",
-        "assets/screens/submeowsions02.png",
-        "assets/screens/submeowsions03.png",
+        "assets/screens/submeowsions_a.png",
+        "assets/screens/submeowsions_b.png",
+        "assets/screens/submeowsions_c.png",
       ],
       githubURL: "https://github.com/GrzegorzFordon/submeowsions",
       hostURL: "",
@@ -54,14 +49,11 @@ class ProjectsView extends StatelessWidget {
       bulletpoints: [
         "State management with Riverpod",
         "Local storage and autosave with Hive",
-        // "last one, short",
-        // "four and five and six and",
-        // "new last one that has a bit more to say",
       ],
       imagePaths: [
-        "assets/screens/stitchintime01.png",
-        "assets/screens/stitchintime02.png",
-        "assets/screens/stitchintime03.png",
+        "assets/screens/stitchintime_a.png",
+        "assets/screens/stitchintime_b.png",
+        "assets/screens/stitchintime_c.png",
       ],
       githubURL: "https://github.com/GrzegorzFordon/stitchin_time",
       hostURL: "https://grzegorzfordon.github.io/stitchin_time/",
@@ -72,7 +64,11 @@ class ProjectsView extends StatelessWidget {
         spacing: 4,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Projects", textAlign: TextAlign.start, style: TextStyle(fontSize: 20)),
+          Text(
+            "Projects",
+            textAlign: TextAlign.start,
+            style: TextStyle(fontSize: 20),
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 24.0,

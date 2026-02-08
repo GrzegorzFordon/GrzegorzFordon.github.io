@@ -12,7 +12,7 @@ class MiscView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var pageController = usePageController(initialPage: 100);
+    var pageController = usePageController(initialPage: gamedevGifUrls.length*100);
 
     var videoController = useState(VideoPlayerController.networkUrl(Uri.parse("https://i.imgur.com/SEpYkPT.mp4")));
 
