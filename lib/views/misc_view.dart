@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:gif_view/gif_view.dart';
+import 'package:portfolio/generated/app_localizations.dart';
 import 'package:transparent_image/transparent_image.dart';
 import 'package:video_player/video_player.dart';
 
@@ -12,6 +13,8 @@ class MiscView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
+
     var pageController = usePageController(
       initialPage: gamedevGifUrls.length * 100,
     );
@@ -31,7 +34,7 @@ class MiscView extends HookWidget {
         videoController.value.setLooping(true);
         videoController.value.play();
       });
-    },[videoController.value]);
+    }, [videoController.value]);
 
     return Column(
       children: [
@@ -40,7 +43,7 @@ class MiscView extends HookWidget {
           spacing: 4.0,
           children: [
             Text(
-              "Personal",
+              localizations?.personal ?? "",
               textAlign: TextAlign.start,
               style: TextStyle(fontSize: 20),
             ),
@@ -63,11 +66,12 @@ class MiscView extends HookWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   spacing: 24,
                   children:
-                      List<Widget>.generate(
-                        miscText.length,
-                        (index) => Text(miscText[index]),
-                      ) +
+                      // List<Widget>.generate(
+                      //   miscText.length,
+                      //   (index) => Text(miscText[index]),
+                      // ) +
                       [
+                        Text(localizations?.personal_desc??""),
                         Container(
                           width: 400,
                           height: 200,
@@ -77,7 +81,6 @@ class MiscView extends HookWidget {
                                 alignment: Alignment.center,
                                 // child: VideoPlayer(videoController.value),
                                 child: PageView.builder(
-                                  
                                   controller: pageController,
                                   onPageChanged: (value) {
                                     videoController.dispose();
@@ -114,9 +117,9 @@ class MiscView extends HookWidget {
                                     videoController.value.dispose();
 
                                     pageController.previousPage(
-                                    duration: duration,
-                                    curve: curve,
-                                  );
+                                      duration: duration,
+                                      curve: curve,
+                                    );
                                   },
                                   // onPressed: () {
                                   //   videoIndex.value = (videoIndex.value - 1) % gamedevGifUrls.length;
@@ -136,9 +139,9 @@ class MiscView extends HookWidget {
                                     videoController.value.dispose();
 
                                     pageController.nextPage(
-                                    duration: duration,
-                                    curve: curve,
-                                  );
+                                      duration: duration,
+                                      curve: curve,
+                                    );
                                   },
                                   // onPressed: () async {
                                   //   var oldindex = videoIndex.value;
@@ -166,11 +169,9 @@ class MiscView extends HookWidget {
   }
 }
 
-List<String> miscText = [
-  "In my free time I enjoy playing board games and cooking with friends. Some of my current favourites to play are Scythe, Coup and the Android: Netrunner CCG. :)",
-  "I admin a game development-focused Discord server that puts a big focus on helping new developers gain their skills quickly.",
-  "I also do game dev as a hobby.",
-];
+// List<String> miscText = [
+//   "I enjoy playing board games and cooking with friends. Some of my current favourites to play are Scythe, Coup and the Android: Netrunner CCG. :)\n\nIn my free time I do game development, including running a Discord server that focuses on helping new devs gain their skills quickly.",
+// ];
 
 List<String> gamedevGifUrls = [
   "SEpYkPT",

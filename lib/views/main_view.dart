@@ -6,6 +6,7 @@ import 'package:portfolio/views/misc_view.dart';
 import 'package:portfolio/views/profile_view.dart';
 import 'package:portfolio/views/projects_view.dart';
 import 'package:portfolio/views/skills_view.dart';
+import 'package:portfolio/widgets/l10n_choice_widget.dart';
 
 var spacing = 8.0;
 
@@ -15,9 +16,9 @@ class MainView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      
       child: Container(
         padding: EdgeInsets.all(24.0),
+
         child: Column(
           spacing: 24.0,
           children: [
@@ -86,7 +87,10 @@ class MainViewMultiPanel extends StatelessWidget {
           spacing: 24,
           children: [
             Flexible(flex: 3, child: ProjectsView()),
-            Flexible(flex: 2, child: Column(spacing: 50, children: [SkillsView(), MiscView()])),
+            Flexible(
+              flex: 2,
+              child: Column(spacing: 50, children: [SkillsView(), MiscView()]),
+            ),
           ],
         ),
       ],

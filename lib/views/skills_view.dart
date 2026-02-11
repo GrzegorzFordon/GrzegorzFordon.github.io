@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:portfolio/generated/app_localizations.dart';
 
 class SkillsView extends StatelessWidget {
   const SkillsView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
+
     return Column(
       spacing: 4.0,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Skills", textAlign: TextAlign.start, style: TextStyle(fontSize: 20)),
+        Text(localizations?.skills??"", textAlign: TextAlign.start, style: TextStyle(fontSize: 20)),
         LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
             bool isWide = constraints.maxWidth > 400;

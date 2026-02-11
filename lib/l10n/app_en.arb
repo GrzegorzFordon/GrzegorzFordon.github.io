@@ -1,0 +1,20 @@
+{
+    "welcome": "Hi! I'm Grzegorz.",
+    "about_A": "A full-stack developer with a focus on the ",
+    "about_B": " Flutter framework.",
+    "about_C": "Based in Berlin, Germany",
+    "skills": "Skills",
+    "projects": "Projects",
+    "personal": "Personal",
+    "promptwist_desc": "Stuck on a blank page? Try PrompTwist! A modular, responsive app that combines random themes with random color palettes for a fresh idea each time.",
+    "promptwist_point_0": "State management with Riverpod",
+    "promptwist_point_1": "Cross platform - Released for Web, Mobile and Desktop",
+    "stitchin_time_desc": "Cross platform app for knitters/crocheters. Create charts using a fully-fledged pixel art editor, then switch to the row counter screen once ready to craft to let the app keep track of your progress.",
+    "stitchin_time_point_0": "State management with Riverpod",
+    "stitchin_time_point_1": "SQL database with Drift",
+    "stitchin_time_point_2": "Navigation with GoRouter",
+    "submeowsions_desc": "My partner asked me to create a simple solution for keeping track of submissions to art/literature magazines. Submeowsions lets you curate your own database of works, publishers and submissions with quick options for accessing and editing submission data as well as a statistics page.",
+    "submeowsions_point0": "State management with Riverpod",
+    "submeowsions_point1": "Local storage and autosave with Hive",
+    "personal_desc": "I enjoy playing board games and cooking with friends. Some of my current favourites to play are Scythe, Coup and the Android: Netrunner CCG. :)\n\nIn my free time I do game development, including running a Discord server that focuses on helping new devs gain their skills quickly."
+}

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/generated/app_localizations.dart';
 import 'package:portfolio/models/project_model.dart';
 import 'package:portfolio/widgets/project_card.dart';
 
@@ -7,13 +8,14 @@ class ProjectsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final localizations = AppLocalizations.of(context);
+
     ProjectModel modelPromptwist = ProjectModel(
       title: "PrompTwist",
-      paragraph:
-          "Stuck on a blank page? Try PrompTwist! A modular, responsive app that combines random themes with random color palettes for a fresh idea each time.",
+      paragraph: localizations?.promptwist_desc ?? "",
       bulletpoints: [
-        "State management with Riverpod",
-        "Cross platform - Released for Web, Mobile and Desktop",
+        localizations?.promptwist_point_0 ?? "",
+        localizations?.promptwist_point_1 ?? "",
       ],
       imagePaths: [
         "assets/screens/promptwist_home.png",
@@ -26,12 +28,12 @@ class ProjectsView extends StatelessWidget {
 
     ProjectModel modelSubmeowsions = ProjectModel(
       title: "Submeowsions",
-      paragraph:
-          "My partner asked me to create a simple solution for keeping track of submissions to art/literature magazines. Submeowsions lets you curate your own database of works, publishers and submissions with quick options for accessing and editing submission data as well as a statistics page.",
+      paragraph: localizations?.submeowsions_desc ?? "",
+
       bulletpoints: [
-        "State management with Riverpod",
-        "SQL database with Drift",
-        "Navigation with GoRouter",
+        localizations?.stitchin_time_point_0 ?? "",
+        localizations?.stitchin_time_point_1 ?? "",
+        localizations?.stitchin_time_point_2 ?? "",
       ],
       imagePaths: [
         "assets/screens/submeowsions_a.png",
@@ -44,11 +46,11 @@ class ProjectsView extends StatelessWidget {
 
     ProjectModel modelStitchintime = ProjectModel(
       title: "Stitchin' Time",
-      paragraph:
-          "Cross platform app for knitters/crocheters. Create charts using a fully-fledged pixel art editor, then switch to the row counter screen once ready to craft to let the app keep track of your progress.",
+      paragraph: localizations?.stitchin_time_desc ?? "",
+
       bulletpoints: [
-        "State management with Riverpod",
-        "Local storage and autosave with Hive",
+        localizations?.submeowsions_point0 ?? "",
+        localizations?.submeowsions_point1 ?? "",
       ],
       imagePaths: [
         "assets/screens/stitchintime_a.png",
@@ -65,7 +67,7 @@ class ProjectsView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Projects",
+            localizations?.projects ?? "",
             textAlign: TextAlign.start,
             style: TextStyle(fontSize: 20),
           ),

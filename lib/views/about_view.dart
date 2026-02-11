@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:material_symbols_icons/material_symbols_icons.dart';
+import 'package:portfolio/generated/app_localizations.dart';
 
 class AboutView extends StatelessWidget {
   const AboutView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = TextStyle(fontSize: 46, color: Theme.of(context).colorScheme.onSurface);
+    final TextStyle textStyle = TextStyle(
+      fontSize: 46,
+      color: Theme.of(context).colorScheme.onSurface,
+    );
+
+    final localizations = AppLocalizations.of(context);
 
     return Container(
       // height: 250,
@@ -19,7 +25,8 @@ class AboutView extends StatelessWidget {
         spacing: 5,
         children: [
           Text(
-            "Hi! I'm Grzegorz.",
+            // "Hi! I'm Grzegorz.",
+            localizations?.welcome ?? "",
             style: textStyle,
             maxLines: 2,
             overflow: TextOverflow.fade,
@@ -29,19 +36,24 @@ class AboutView extends StatelessWidget {
             text: TextSpan(
               style: textStyle.copyWith(fontSize: 20),
               children: [
-                TextSpan(text: "A full-stack developer with a focus on the "),
-                WidgetSpan(child: Icon(Symbols.flutter_rounded, color: textStyle.color)),
-                TextSpan(text: " Flutter framework."),
+                TextSpan(text: localizations?.about_A ?? ""),
+                WidgetSpan(
+                  child: Icon(Symbols.flutter_rounded, color: textStyle.color),
+                ),
+                TextSpan(text: localizations?.about_B ?? ""),
               ],
             ),
             maxLines: 3,
             // softWrap: false,
             overflow: TextOverflow.fade,
           ),
-    
+
           Text(
-            "Based in Berlin, Germany",
-            style: textStyle.copyWith(fontSize: 20, color: textStyle.color?.withAlpha(150)),
+            localizations?.about_C ?? "",
+            style: textStyle.copyWith(
+              fontSize: 20,
+              color: textStyle.color?.withAlpha(150),
+            ),
             textAlign: TextAlign.start,
             maxLines: 2,
           ),
